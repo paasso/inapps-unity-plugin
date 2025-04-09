@@ -11,15 +11,23 @@ import com.yandex.pay.inapps.PaymentData;
 import com.yandex.pay.inapps.YPayResult;
 import com.unity3d.player.UnityPlayer;
 
+public interface YPayActivityReultListener {
+        void OnResult(String message);
+}
+
 public class YPayActivity extends ComponentActivity {
 
     private static final String YPAY_BUTTON = "YPay Button";
     private static final String ON_RESULT = "OnResult";
     private static final String PAYMENT_URL_KEY = "paymentUrl";
     private static PaymentSession _paymentSession;
+    private static YPayActivityReultListener _customCallback;
 
     public static void setPaymentSession(PaymentSession paymentSession) {
         _paymentSession = paymentSession;
+    }
+    public static void setCustomResultCallBack(YPayActivityReultListener customResultCallback){
+        _customCallback = customResultCallback;
     }
 
     @Override
@@ -45,7 +53,11 @@ public class YPayActivity extends ComponentActivity {
 
     private void sendToUnity(YPayResult result) {
         String message = resultToString(result);
-        UnityPlayer.UnitySendMessage(YPAY_BUTTON, ON_RESULT, message);
+        if(_customCallback==null){
+            UnityPlayer.UnitySendMessage(YPAY_BUTTON, ON_RESULT, message);
+            return;
+        }
+        _customCallback.OnResult(message);
     }
 
     private String resultToString(YPayResult result) {

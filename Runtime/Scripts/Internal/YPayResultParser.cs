@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace YPay
 {
-    internal static class YPayResultParser
+    public static class YPayResultParser
     {
-        internal static IYPayResult Parse(string result)
+        public static IYPayResult Parse(string result)
         {
             var index = result.IndexOf(' ');
             var status = result.Substring(0, index).ToLower();
