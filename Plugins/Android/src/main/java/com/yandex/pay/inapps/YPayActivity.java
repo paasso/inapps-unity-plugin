@@ -17,12 +17,12 @@ public class YPayActivity extends ComponentActivity {
     private static final String ON_RESULT = "OnResult";
     private static final String PAYMENT_URL_KEY = "paymentUrl";
     private static PaymentSession _paymentSession;
-    private static YPayActivityReultListener _customCallback;
+    private static YPayActivityResultListener _customCallback;
 
     public static void setPaymentSession(PaymentSession paymentSession) {
         _paymentSession = paymentSession;
     }
-    public static void setCustomResultCallBack(YPayActivityReultListener customResultCallback){
+    public static void setCustomResultCallBack(YPayActivityResultListener customResultCallback){
         _customCallback = customResultCallback;
     }
 
