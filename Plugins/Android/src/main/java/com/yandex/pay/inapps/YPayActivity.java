@@ -11,10 +11,6 @@ import com.yandex.pay.inapps.PaymentData;
 import com.yandex.pay.inapps.YPayResult;
 import com.unity3d.player.UnityPlayer;
 
-public interface YPayActivityReultListener {
-        void OnResult(String message);
-}
-
 public class YPayActivity extends ComponentActivity {
 
     private static final String YPAY_BUTTON = "YPay Button";
