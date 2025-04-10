@@ -5,9 +5,9 @@ using YPay.Android;
 
 namespace YPay
 {
-    internal class YPayPlugin
+    public class YPayPlugin
     {
-        internal YPayPlugin(YPayConfig config)
+        public YPayPlugin(YPayConfig config)
         {
             if (Application.platform == RuntimePlatform.Android)
             {
@@ -20,7 +20,7 @@ namespace YPay
             }
         }
 
-        internal void StartPayment(string paymentUrl)
+        public void StartPayment(string paymentUrl)
         {
             if (Application.platform == RuntimePlatform.Android)
             {
